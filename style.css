@@ -1,0 +1,47 @@
+body, button, textarea {
+    background-color: #fff;
+    font-family: Consolas, monaco, monospace;
+    font-size: 100%; font-style: normal;
+    font-variant: normal; font-weight: 500;
+    line-height: 110%;
+}
+
+textarea {
+    font-size: small;
+}
+
+.container {
+    width: 80%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 2mm;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+}
+
+h1 {
+    font-family: Consolas, monaco, monospace;
+    font-size: 170%; font-style: normal;
+    font-variant: normal; font-weight: 700;
+    line-height: 190%;
+}
+
+h3 {
+    font-family: Consolas, monaco, monospace;
+    font-size: 100%; font-style: normal;
+    font-variant: normal; font-weight: 400;
+    line-height: 110%; font-style:italic;
+    color: #777;
+}
+
+p, button {
+    margin-left: 2em;
+}
+
+#text_json1, #text_json2 {
+    width: 30em;
+    height: 50em;
+}
