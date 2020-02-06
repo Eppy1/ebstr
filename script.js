@@ -6,11 +6,11 @@ let robot1 = {
   container: ['none', 'none', 'none', 'none', 'none', 'none'],
   dynamixels: [0, 0, 0, 0, 0, 0],
   curr_state: 0,
-  strategy: test_take_bot6.concat(test_put_first6).concat({name:'finish'})
+  strategy: test_take_top6.concat({name:'finish'})
 }
 
 let robot2 = {
-  coords: [215.625, 664.06, 3.14],
+  coords: [215.625, 664.06+5000, 3.14],
   container: ['none', 'none', 'none', 'none', 'none', 'none'],
   dynamixels: [0, 0, 0, 0, 0, 0],
   curr_state: 0,
@@ -38,19 +38,21 @@ function controlRobot(robot) {
   c = robot.strategy[robot.curr_state];
 
     if(c.name == 'move') {
+      speed = c.speed ? c.speed : ROBOT_SPEED_STD;
+
       var dist = euc(robot.coords, c.point);
       var ort = [(c.point[0]-robot.coords[0])/dist, (c.point[1]-robot.coords[1])/dist];
 
-      if(dist >= ROBOT_SPEED_STD * (DT/1000)) {
-        robot.coords[0] += ROBOT_SPEED_STD * (DT/1000) * ort[0];
-        robot.coords[1] += ROBOT_SPEED_STD * (DT/1000) * ort[1];
+      if(dist >= speed * (DT/1000)) {
+        robot.coords[0] += speed * (DT/1000) * ort[0];
+        robot.coords[1] += speed * (DT/1000) * ort[1];
       }
 
       if(Math.abs(robot.coords[2] - c.point[2]) >= 0.15) {
         robot.coords[2] += ANGULAR_SPEED_STD * (DT/1000) * Math.sign(c.point[2] - robot.coords[2]);
       }
 
-      if(dist < ROBOT_SPEED_STD * (DT/1000) && Math.abs(robot.coords[2] - c.point[2]) < 0.15) {
+      if(dist < speed * (DT/1000) && Math.abs(robot.coords[2] - c.point[2]) < 0.15) {
         robot.coords[0] = c.point[0];
         robot.coords[1] = c.point[1];
         robot.coords[2] = c.point[2];
@@ -122,6 +124,11 @@ function controlRobot(robot) {
 
       document.getElementById('score').innerHTML='<b>SCORE: </b>' + round(score)+'<span style="color:gray;">(abs max 129)</span>';
 
+      robot.curr_state++;
+    }
+    
+    if(c.name == 'stm') {
+      //kek
       robot.curr_state++;
     }
 }
@@ -248,8 +255,22 @@ function makePatternFromStrategy(strategy, comment = 'test') {
         cmd_params: ""
       };
 
-      cmd.values.forEach(val => action.cmd_params += val == 15 ? 'f' : val);
+      cmd.values.forEach(val => action.cmd_params += val == 15 ? '9' : val);
       
+      //omagad
+      var tmp1 = action.cmd_params.substring(0, 2)
+      var tmp2 = action.cmd_params.substring(2, 6)
+      action.cmd_params = tmp2 + tmp1
+
+      output.commands[output.commands.length] = {'send_stm_cmd': action};
+    }
+
+    if(cmd.name == 'stm') {
+      action = {
+        cmd: cmd.cmd,
+        cmd_params: cmd.cmd_params
+      };
+
       output.commands[output.commands.length] = {'send_stm_cmd': action};
     }
 

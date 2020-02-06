@@ -58,6 +58,7 @@ const OFF_L = [
 ]
 
 const ROBOT_SPEED_STD = 650;
+const ROBOT_SPEED_SLOW = 300;
 const ANGULAR_SPEED_STD = 3.5;//500 / (2*Math.PI * 120);
 
 
