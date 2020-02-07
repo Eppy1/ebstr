@@ -58,10 +58,10 @@ const OFF_L = [
 ]
 
 const ROBOT_SPEED_STD = 650;
-const ROBOT_SPEED_SLOW = 300;
+const ROBOT_SPEED_SLOW = 900;
 const ANGULAR_SPEED_STD = 3.5;//500 / (2*Math.PI * 120);
 
 
 let TAKE_DELAY = 300;
 let DROP_DELAY = 400;
-let DYNAMIXEL_DELAY = 400;
+let DYNAMIXEL_DELAY = 600;

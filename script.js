@@ -6,7 +6,15 @@ let robot1 = {
   container: ['none', 'none', 'none', 'none', 'none', 'none'],
   dynamixels: [0, 0, 0, 0, 0, 0],
   curr_state: 0,
-  strategy: test_take_top6.concat({name:'finish'})
+  strategy: test_take_center_pair.
+            concat(test_take_pair_from_port).
+            concat(test_castling).
+            concat(test_drop23).
+            concat(test_lift_up_windsocks).
+            concat(test_take_pair_from_big_port).
+            concat(test_take_top4).
+            concat(test_drop456).
+            concat({name:'finish'})
 }
 
 let robot2 = {
@@ -141,6 +149,14 @@ function drop(robot, i, bouy_pos, offset) {
   robot.container[i] = 'none';
 }
 
+function drop(robot, i, bouy_pos, offset) { 
+  px = robot.coords[0]+bouy_pos[0]*cos(robot.coords[2])+bouy_pos[1]*sin(robot.coords[2]) + offset[0];
+  py = robot.coords[1]-bouy_pos[0]*sin(robot.coords[2])+bouy_pos[1]*cos(robot.coords[2]) + offset[1];
+  
+  buoys.push([px, py, robot.container[i]/*(i>0? 'green' : 'red')*/]);
+  robot.container[i] = 'none';
+}
+
 time = 0;
 
 function setup() {
@@ -254,7 +270,7 @@ function makePatternFromStrategy(strategy, comment = 'test') {
         cmd: "SetLowDynamixelsPoses",
         cmd_params: ""
       };
-
+      
       cmd.values.forEach(val => action.cmd_params += val == 15 ? '9' : val);
       
       //omagad

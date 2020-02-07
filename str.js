@@ -262,15 +262,15 @@ let test_castling = [
 
   { name: 'move', point: [1800.00, 1745, -1.57], speed: ROBOT_SPEED_SLOW },
   { name: 'dynamixel', values: [0, 15, 15, 15, 15, 0], delay: DYNAMIXEL_DELAY},
-  { name: 'move', point: [1800.00, 1400, -1.57], speed: ROBOT_SPEED_SLOW }
+  //{ name: 'move', point: [1800.00, 1400, -1.57], speed: ROBOT_SPEED_SLOW }
 ]
 
-let test_take_top6 = [
+let test_take_top4 = [
   { name: 'move', point: [145.31, 631.23, 0.00-2.09], speed: ROBOT_SPEED_SLOW }, 
   { name: 'dynamixel', values: [15, 15, 15, 2, 2, 15], delay: DYNAMIXEL_DELAY},
   { name: 'move', point: [140.63, 457.89, 0.00-2.09], speed: ROBOT_SPEED_SLOW },
   { name: 'move', point: [426.56, 448.52, 0.00-2.09], speed: ROBOT_SPEED_SLOW },
-  { name: 'take', bouy_id: 1, place_id: 3, delay: 0 },
+  { name: 'take', bouy_id: 1, place_id: 3, delay: 1 },
   { name: 'take', bouy_id: 2, place_id: 4, delay: 0 },
   { name: 'dynamixel', values: [15, 15, 15, 1, 1, 15], delay: DYNAMIXEL_DELAY},
   { name: 'move', point: [717.19, 457.89, -1.57-2.09], speed: ROBOT_SPEED_SLOW },
@@ -284,4 +284,67 @@ let test_take_top6 = [
   { name: 'move', point: [707.81, 172.13, -2.62], speed: ROBOT_SPEED_SLOW },
   { name: 'dynamixel', values: [15, 1, 15, 15, 15, 15], delay: DYNAMIXEL_DELAY},
   { name: 'take', bouy_id: 0, place_id: 1, delay: 0 },
+]
+
+let test_take_center_pair = [
+  { name: 'move', point: [285.94, 678.07, 1.05], speed: ROBOT_SPEED_SLOW }, 
+  { name: 'move', point: [951.56, 626.54, 1.05], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [15, 2, 2, 15, 15, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'move', point: [1021.87, 776.45, 1.05], speed: ROBOT_SPEED_SLOW }, 
+  { name: 'dynamixel', values: [15, 1, 15, 15, 15, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'take', bouy_id: 6, place_id: 1, delay: 0 },
+  { name: 'move', point: [1190.63, 1020.06, 1.05], speed: ROBOT_SPEED_SLOW }, 
+  { name: 'move', point: [1289.06, 1118.43, 1.05], speed: ROBOT_SPEED_SLOW }, 
+  { name: 'dynamixel', values: [15, 15, 1, 15, 15, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'take', bouy_id: 7, place_id: 2, delay: 0 },
+]
+
+let test_take_pair_from_port = [
+  { name: 'move', point: [1804.69, 1399.52, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'move', point: [1710.94, 1460.42, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [15, 15, 15, 2, 2, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'sleep', time: 0.5},
+  { name: 'move', point: [1701.56, 1605.64, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [15, 15, 15, 15, 1, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'sleep', time: 0.5},
+  { name: 'take', bouy_id: 21, place_id: 4, delay: 0 },
+  { name: 'move', point: [1809.37, 1465.10, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'move', point: [1893.75, 1460.42, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'sleep', time: 0.5},
+  { name: 'move', point: [1884.37, 1615.01, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [15, 15, 15, 1, 15, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'take', bouy_id: 20, place_id: 3, delay: 0 },
+]
+
+let test_drop23 = [
+  { name: 'move', point: [1800.00, 1745, -1.57], speed: ROBOT_SPEED_SLOW },
+  { name: 'move', point: [1800.00, 1745, 0.52], speed: ROBOT_SPEED_SLOW },
+  { name: 'move', point: [1800.00, 1800, 0.52], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [15, 4, 4, 15, 15, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'move', point: [1800.00, 1705, 0.52], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [15, 0, 0, 15, 15, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'move', point: [1800.00, 1705, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'move', point: [1800.00, 1755, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [15, 15, 15, 3, 3, 15], delay: DYNAMIXEL_DELAY},
+  { name: 'move', point: [1800.00, 1650, 2.62], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [15, 15, 15, 0, 0, 15], delay: DYNAMIXEL_DELAY},
+]
+
+let test_take_pair_from_big_port = [
+  { name: 'move', point: [150.00, 1385.46, 0.00], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [2, 15, 15, 15, 15, 2], delay: DYNAMIXEL_DELAY},
+  { name: 'move', point: [150.00, 1146.54, 0.00], speed: ROBOT_SPEED_SLOW },
+  { name: 'move', point: [426.56, 1155.91, 0.00], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [1, 15, 15, 15, 15, 1], delay: DYNAMIXEL_DELAY},
+  { name: 'take', bouy_id: 3, place_id: 5, delay: 0 },
+  { name: 'take', bouy_id: 4, place_id: 0, delay: 0 },
+]
+
+let test_drop456 = [
+  { name: 'move', point: [1780, 1720, -1.57], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [4, 15, 15, 15, 15, 4], delay: DYNAMIXEL_DELAY},
+  { name: 'move', point: [1780, 1670, -1.57], speed: ROBOT_SPEED_SLOW },
+  { name: 'dynamixel', values: [1, 15, 15, 15, 15, 1], delay: DYNAMIXEL_DELAY},
+  { name: 'move', point: [1780, 1670, 0.52], speed: ROBOT_SPEED_SLOW },
+  { name: 'move', point: [1840, 1670, 0.52], speed: ROBOT_SPEED_SLOW },
 ]
